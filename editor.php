@@ -39,13 +39,9 @@
 				<ul>
 					<li><a href="#">File</a>
 						<ul>
-							<li><a href="#" onclick="newFile()">New File</a>
-<!-- 								<ul>
-									<li><a href="#">Java Class</a></li>
-									<li><a href="#">HTML File</a></li>
-									<li><a href="#">CSS Stylesheet</a></li>
-									<li><a href="#">JS Script</a></li>
-								</ul> -->
+							<li><a href="#">New File</a>
+                                <ul id="file_types">
+                                </ul>
 							</li>
 							<li><a href="#" onclick="saveFile()">Save</a></li>
                             <li><a href="#" onclick="deleteFile()">Delete File</a></li>

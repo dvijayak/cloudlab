@@ -239,12 +239,13 @@ function viewLabsInit() {
 		
 }
 
+//var LabTypes = {"Type_C":1, "Type_Cpp":2, "Type_BlackBerry":3};
+//Object.freeze(LabTypes);
+
 function viewFilePaneInit() {	
 	
 	var TextMode = require("ace/mode/text").Mode;
-	window.aceViewFilePane.getSession().setMode(new TextMode());	
-	// var text = "Username@cloud-lab$> ";
-	// window.aceViewFilePane.insert(text);	
+	window.aceViewFilePane.getSession().setMode(new TextMode());
 	window.aceViewFilePane.setReadOnly(true);
     window.aceViewFilePane.setShowPrintMargin(false);
 	window.aceViewFilePane.renderer.setShowGutter(false);
@@ -341,8 +342,7 @@ function deleteLab() {
 				}
 			}																
 		}		
-	}	
-
+	}
 }
 
 function openLab(fileName) {
@@ -411,18 +411,48 @@ function getAllFiles() {
             
             e = document.getElementById("fileList");
             
+            ///////////////////
+            // This code needs to be changed to correct way of modifying HTML; append elements instead
+            ///////////////////
             var file_html = "";
             for (var i = 0; i < filenames.length; i++) {
-                if (i == 0) {
+            
+                if ((i == 0) && (filenames[i] != "type.txt")) {
                     file_html += "<li class=\"highlight\">" + filenames[i] + "</li>\n";
                     window.aceEditor.getSession().setValue(fileArray[filenames[i]]);
                 }
-                else {
+                
+                else if (filenames[i] != "type.txt") {
                     file_html += "<li>" + filenames[i] + "</li>\n";
                 }
             }
+            
             e.innerHTML = file_html;
             
+            var type = fileArray["type.txt"];
+            var newFiles = document.getElementById("file_types");
+            file_html = "";
+            
+            /////////////////////////
+            // This code needs to be changed to correctly modify the HTML; append elements instead
+            ////////////////////////
+            if (type == "C") {
+                file_html += "<li><a href=\"#\" onclick='newFile(\"c\")'>C Source</a></li>";
+                file_html += "<li><a href=\"#\" onclick='newFile(\"h\")'>C Header</a></li>";
+            }
+            else if (type == "CPP") {
+                file_html += "<li><a href=\"#\" onclick='newFile(\"cpp\")'>CPP Source</a></li>";
+                file_html += "<li><a href=\"#\" onclick='newFile(\"hpp\")'>CPP Header</a></li>";
+            }
+            else if (type == "BB") {
+                file_html += "<li><a href=\"#\" onclick='newFile(\"html\")'>HTML Document</a></li>";
+                file_html += "<li><a href=\"#\" onclick='newFile(\"js\")'>Javascript Source</a></li>";
+                file_html += "<li><a href=\"#\" onclick='newFile(\"css\")'>CSS Stylesheet</a></li>";
+            }
+    
+            newFiles.innerHTML = file_html;
+            
+            // get rid of this eventually
             $('.file_list li').click(function() {
                 fileArray[$('.highlight').text()] = window.aceEditor.getSession().getValue();
                 $('.highlight').removeClass('highlight');
@@ -443,34 +473,67 @@ function overlay(element) {
 	e.style.display = (e.style.display == "block") ? "none" : "block";			
 }
 
-function newFile() {
+function newFile(ext) {
 	
-	var newFile = prompt("Enter the name of your new file:", "Untitled");		
-	
-	// -------------------------------- //
-	// Check what type of project it is and append the necessary extension if necessary//	
-	// -------------------------------- //
-	
-	var fileListContainer = document.getElementById("fileListContainer");
-	
-	for (var i = 0; i < fileListContainer.childNodes.length; i++) {
-		
+	var newFile = prompt("Enter the name of your new file:", "Untitled");
+    
+    if (ext == "c") {
+        fileManager.create_c_source(username, project, newFile, {"onFinish": function(response){addNewFile(newFile + "." + ext);}});
+    }
+    else if (ext == "cpp") {
+        fileManager.create_cpp_source(username, project, newFile, {"onFinish": function(response){addNewFile(newFile + "." + ext);}});
+    }
+    else if (ext == "h") {
+        fileManager.create_h_source(username, project, newFile, {"onFinish": function(response){addNewFile(newFile + "." + ext);}});
+    }
+    else if (ext == "hpp") {
+        fileManager.create_hpp_source(username, project, newFile, {"onFinish": function(response){addNewFile(newFile + "." + ext);}});
+    }
+    else if (ext == "html") {
+        fileManager.create_html_source(username, project, newFile, {"onFinish": function(response){addNewFile(newFile + "." + ext);}});
+    }
+    else if (ext == "js") {
+        fileManager.create_js_source(username, project, newFile, {"onFinish": function(response){addNewFile(newFile + "." + ext);}});
+    }
+    else if (ext == "css") {
+        fileManager.create_css_source(username, project, newFile, {"onFinish": function(response){addNewFile(newFile + "." + ext);}});
+    }
+}
+
+function addNewFile(name) {
+    var fileListContainer = document.getElementById("filePane");
+
+    for (var i = 0; i < fileListContainer.childNodes.length; i++) {
 		if (fileListContainer.childNodes[i].nodeName == "UL") {
-			
+			fileArray[$('.highlight').text()] = window.aceEditor.getSession().getValue();
+            $('.highlight').removeClass('highlight');
+            
 			var ulist = fileListContainer.childNodes[i];
-			
-			// Append a new LI element that represents a new file called <FilePath> (modify code as needed for correct file name)
 			var listitem = document.createElement("LI");			
-			var anchor = document.createElement("a");
-			anchor.setAttribute("href", "#");
-			anchor.setAttribute("onclick", "openFile(\"" + newFile + "\")");
-			anchor.innerHTML = newFile;
-			listitem.appendChild(anchor);			
-			ulist.appendChild(listitem);						
-			
+			listitem.setAttribute("class", "highlight");
+			listitem.innerHTML = name;
+			ulist.appendChild(listitem);
+            getFile(name);
 			break;
 		}
-	}
+	}    
+
+    // get rid of this eventually; use onclick if possible
+    $('.file_list li').click(function() {
+        fileArray[$('.highlight').text()] = window.aceEditor.getSession().getValue();
+        $('.highlight').removeClass('highlight');
+        $(this).addClass('highlight');
+        window.aceEditor.getSession().setValue(fileArray[$(this).text()]);
+    });
+}
+
+function getFile(name) {
+    fileManager.get_source_file(username, project, name, {
+        "onFinish": function(response){
+            fileArray[name] = response;
+            window.aceEditor.getSession().setValue(fileArray[name]);
+        }
+    });
 }
 
 function saveFile() {
@@ -490,10 +553,25 @@ function saveAllFiles() {
 }
 
 function deleteFile() {
-    fileManager.delete_file(username, project, $('.highlight').text(), {    
+    fileManager.delete_file(username, project, $('.highlight').text(), {
         "onFinish": function(response){
-            getAllFiles();
-        }  
+            var filenames = getKeys(fileArray);
+            var flist = document.getElementById("fileList");
+            var listitem = flist.childNodes[0];
+            
+            delete fileArray[$('.highlight').text()];
+            for (var j = 0; j < flist.childNodes.length; j++) {											
+				if (flist.childNodes[j].nodeName == "LI") {
+					if (flist.childNodes[j].innerHTML == $('.highlight').text()) {
+                        flist.removeChild(flist.childNodes[j]);
+                        break;
+                    }
+				}
+			}
+
+            listitem.setAttribute("class", "highlight");
+            window.aceEditor.getSession().setValue(fileArray[$('.highlight').text()]);
+        }
     });
 }
 

@@ -184,3 +184,5 @@ scripts/aws_php_sdk/services/elb.class.php
 scripts/aws_php_sdk/services/sns.class.php
 
 scripts/aws_php_sdk/services/sts.class.php
+
+scripts/.DS_Store

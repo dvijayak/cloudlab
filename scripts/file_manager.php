@@ -50,6 +50,10 @@
             }
         }
         
+        function get_source_file($user, $project, $filename) {
+            return $this->get_file($project, $user . "/" . $filename);
+        }
+        
         function get_source_files($user, $project) {
             $files   = $this->s3->get_object_list(strtolower($project));
             $results = array();
@@ -75,7 +79,7 @@
             }
 
             else {
-                return false;
+                return "";
             }
         }
         
@@ -177,6 +181,19 @@
             }            
         }
         
+        function create_type_file($user, $project, $type) {
+            $exists = $this->s3->if_bucket_exists(strtolower($project));
+            if (!$exists) {
+                echo "Error: could not find bucket\n";
+                return False;
+            }
+            
+            else {
+                $this->save_file($project, $user . "/type.txt", $type);
+                return True;
+            }
+        }
+        
         function save_file($project, $filename, $data) {
             $options = array('body' => $data);
             $this->s3->create_object(strtolower($project), $filename, $options);
@@ -192,7 +209,7 @@
  	$ajax = new PHPLiveX();  
     
 	$fileManager = new FileManager();  
-	$ajax->AjaxifyObjectMethods(array("fileManager" => array("checkIfEdited", "get_source_files", "get_file", "create_html_source", "create_js_source", "create_css_source", "create_h_source", "create_hpp_source", "create_cpp_source", "create_c_source", "save_file", "delete_file")));  
+	$ajax->AjaxifyObjectMethods(array("fileManager" => array("checkIfEdited", "get_source_files", "get_source_file", "create_html_source", "create_js_source", "create_css_source", "create_h_source", "create_hpp_source", "create_cpp_source", "create_c_source", "save_file", "delete_file")));  
     
     
 	$ajax->Run(); // Must be called inside the 'html' or 'body' tags     	

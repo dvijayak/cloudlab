@@ -25,6 +25,7 @@
             $bucket = $this->create_project($project_name);
             if ($bucket) {
                 $fm = new FileManager();
+                $fm->create_type_file("default", $project_name, "BB");
                 $fm->create_html_source("default", $project_name, "index");
                 $fm->create_js_source("default", $project_name, "script");
                 $fm->create_css_source("default", $project_name, "style");
@@ -39,6 +40,7 @@
             $bucket = $this->create_project($project_name);
             if ($bucket) {
                 $fm = new FileManager();
+                $fm->create_type_file("default", $project_name, "C");
                 $fm->create_c_source("default", $project_name, "main");
                 $fm->create_h_source("default", $project_name, "main");
                 return True;
@@ -52,6 +54,7 @@
             $bucket = $this->create_project($project_name);
             if ($bucket) {
                 $fm = new FileManager();
+                $fm->create_type_file("default", $project_name, "CPP");
                 $fm->create_cpp_source("default", $project_name, "main");
                 $fm->create_hpp_source("default", $project_name, "main");
                 return True;
