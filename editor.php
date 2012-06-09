@@ -25,7 +25,8 @@
 		<script src="ace_src/mode-html.js" type="text/javascript" charset="utf-8"></script>
 		<script src="ace_src/mode-css.js" type="text/javascript" charset="utf-8"></script>
 		<script src="ace_src/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
-        <?php include "scripts/file_manager.php"; ?>        
+        <?php include "scripts/file_manager.php"; ?>
+        <?php include "scripts/compile_manager.php"; ?> 
 	</head>
 	
 	<body>				
@@ -46,7 +47,7 @@
 							<li><a href="#" onclick="saveFile()">Save</a></li>
                             <li><a href="#" onclick="deleteFile()">Delete File</a></li>
 							<li><a href="#" onclick="saveAllFiles()">Save All</a></li>
-                            <li><a href="#" onclick="alert('COMPILE & RUN NOT IMPLEMENTED')">Compile & Run</a></li>
+                            <li><a href="#" onclick="compileSource()">Compile & Run</a></li>
 						</ul>
 					</li>
 					<li><a href="#">Edit</a>

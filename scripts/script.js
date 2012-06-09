@@ -403,6 +403,9 @@ function consoleInit() {
     window.aceConsole.setShowPrintMargin(false);
 }
 
+var type;
+var fileArray;
+
 function getAllFiles() {
     fileManager.get_source_files(username, project, {
         "onFinish": function(response){
@@ -429,7 +432,7 @@ function getAllFiles() {
             
             e.innerHTML = file_html;
             
-            var type = fileArray["type.txt"];
+            type = fileArray["type.txt"];
             var newFiles = document.getElementById("file_types");
             file_html = "";
             
@@ -466,6 +469,8 @@ function getAllFiles() {
 function setupEnvironment() {
     fileManager.checkIfEdited(username, project, {});
     getAllFiles();
+    //setTimeout(function() {getAllFiles();}, 1000);
+    //compileManager.create_compile_dir(username, project, {"onFinish": function(response){alert("done, mf"); alert(response);}});
 }
 
 function overlay(element) {
@@ -473,8 +478,7 @@ function overlay(element) {
 	e.style.display = (e.style.display == "block") ? "none" : "block";			
 }
 
-function newFile(ext) {
-	
+function newFile(ext) {	
 	var newFile = prompt("Enter the name of your new file:", "Untitled");
     
     if (ext == "c") {
@@ -575,10 +579,42 @@ function deleteFile() {
     });
 }
 
+function compileSource() {
+    var results = "";
+    var filenames = getKeys(fileArray);
+    var sourcecode = "";
+    
+    for (var i = 0; i < filenames.length; i++) {
+        sourcecode += filenames[i] + " ";
+    }
+    
+    if (type == "C") {
+        window.aceConsole.setReadOnly(false);
+        window.aceConsole.insert("gcc " + sourcecode + "-o main -Wall\n");
+        window.aceConsole.setReadOnly(true);
+        //results = setTimeout(function() {compileManager.compile_c_source(username, project);}, 3000);
+        window.aceConsole.setReadOnly(false);
+        window.aceConsole.insert(results + "\n" + username + "@cloud-lab$> ");
+        window.aceConsole.setReadOnly(true);
+    }
+    else if (type == "CPP") {
+        window.aceConsole.setReadOnly(false);
+        window.aceConsole.insert("g++ " + sourcecode + "-o main -Wall\n");
+        window.aceConsole.setReadOnly(true);
+        //results = setTimeout(function() {compileManager.compile_cpp_source(username, project);}, 3000);
+        window.aceConsole.setReadOnly(false);
+        window.aceConsole.insert(results + "\n" + username + "@cloud-lab$> ");
+        window.aceConsole.setReadOnly(true);
+    }
+    else if (type == "BB") {
+        //setTimeout(function() {getAllFiles(username project);}, 3000);
+        alert("Blackberry compilation not implemented.");
+    }
+}
+
 function charCount() {
 	var text = window.aceEditor.getSession().getValue();
 	alert("The total number of characters in your code is " + text.length + " chars.");
-
 }
 
 function applyChanges() {
