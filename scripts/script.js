@@ -585,7 +585,10 @@ function compileSource() {
     var sourcecode = "";
     
     for (var i = 0; i < filenames.length; i++) {
-        sourcecode += filenames[i] + " ";
+    
+        if (filenames[i] != "type.txt") {
+            sourcecode += filenames[i] + " ";
+        }
     }
     
     if (type == "C") {
