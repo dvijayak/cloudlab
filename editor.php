@@ -13,7 +13,8 @@
 		<script type="text/javascript" src="scripts/lib/jquery/jquery.ui.widget.js"></script>		
 		<script type="text/javascript" src="scripts/lib/jquery/jquery.ui.resizable.js"></script>
         <script type="text/javascript" src="scripts/lib/phplivex/phplivex.js"></script>	
-		<script type="text/javascript" src="scripts/script.js"></script>		
+		<script type="text/javascript" src="scripts/utils.js"></script>
+        <script type="text/javascript" src="scripts/editor.js"></script>	
 		<script type="text/javascript" src="scripts/lib/ace_src/ace.js"               charset="utf-8"></script>
 		<script type="text/javascript" src="scripts/lib/ace_src/theme-textmate.js"    charset="utf-8"></script>
 		<script type="text/javascript" src="scripts/lib/ace_src/theme-eclipse.js"     charset="utf-8"></script>

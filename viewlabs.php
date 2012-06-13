@@ -4,13 +4,18 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" id="viewport" content="height=device-height,width=device-width,user-scalable=no" />
 		<title>Cloud Lab: Code Editor</title>
-		<link href="css/style_viewlabs.css" rel="stylesheet" type="text/css">		
+		<link href="css/style_viewlabs.css" rel="stylesheet" type="text/css">
+
 		<script type="text/javascript" src="scripts/lib/jquery/jquery.js"></script> 
- 		<script type="text/javascript" src="scripts/lib/jquery/jquery.tools.min.js"></script>	
+ 		<script type="text/javascript" src="scripts/lib/jquery/jquery.tools.min.js"></script>
+
 		<script type="text/javascript" src="scripts/lib/ace_src/ace.js"  charset="utf-8"></script>	
 		<script type="text/javascript" src="scripts/lib/ace_src/theme-vibrant_ink.js"  charset="utf-8"></script>
+
         <script type="text/javascript" src="scripts/lib/phplivex/phplivex.js"></script>	
-        <script type="text/javascript" src="scripts/script.js"></script>		
+
+        <script type="text/javascript" src="scripts/viewlabs.js"></script>
+        <script type="text/javascript" src="scripts/utils.js"></script>
         <?php include "scripts/project_manager.php"; ?>				
 		<script type="text/javascript">
 			$(document).ready(function() {	
