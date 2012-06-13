@@ -5,26 +5,26 @@
 		<meta name="viewport" id="viewport" content="height=device-height,width=device-width,user-scalable=no" />
 		<title>Cloud Lab: Code Editor</title>
 		<link href="css/style_editor.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript" src="scripts/jquery.js"></script>
-		<script type="text/javascript" src="scripts/jquery.tools.min.js"></script>		
-		<script type="text/javascript" src="scripts/jquery-1.7.1.js"></script>		
-		<script type="text/javascript" src="scripts/jquery.ui.core.js"></script>		
-		<script type="text/javascript" src="scripts/jquery.ui.mouse.js"></script>		
-		<script type="text/javascript" src="scripts/jquery.ui.widget.js"></script>		
-		<script type="text/javascript" src="scripts/jquery.ui.resizable.js"></script>
-        <script type="text/javascript" src="scripts/phplivex.js"></script>	
+		<script type="text/javascript" src="scripts/lib/jquery/jquery.js"></script>
+		<script type="text/javascript" src="scripts/lib/jquery/jquery.tools.min.js"></script>		
+		<script type="text/javascript" src="scripts/lib/jquery/jquery-1.7.1.js"></script>		
+		<script type="text/javascript" src="scripts/lib/jquery/jquery.ui.core.js"></script>		
+		<script type="text/javascript" src="scripts/lib/jquery/jquery.ui.mouse.js"></script>		
+		<script type="text/javascript" src="scripts/lib/jquery/jquery.ui.widget.js"></script>		
+		<script type="text/javascript" src="scripts/lib/jquery/jquery.ui.resizable.js"></script>
+        <script type="text/javascript" src="scripts/lib/phplivex/phplivex.js"></script>	
 		<script type="text/javascript" src="scripts/script.js"></script>		
-		<script src="ace_src/ace.js" type="text/javascript" charset="utf-8"></script>
-		<script src="ace_src/theme-textmate.js" type="text/javascript" charset="utf-8"></script>
-		<script src="ace_src/theme-eclipse.js" type="text/javascript" charset="utf-8"></script>
-		<script src="ace_src/theme-vibrant_ink.js" type="text/javascript" charset="utf-8"></script>
-		<script src="ace_src/theme-kr_theme.js" type="text/javascript" charset="utf-8"></script>
-		<script src="ace_src/theme-cobalt.js" type="text/javascript" charset="utf-8"></script>
-		<script src="ace_src/mode-java.js" type="text/javascript" charset="utf-8"></script>
-        <script src="ace_src/mode-c_cpp.js" type="text/javascript" charset="utf-8"></script>
-		<script src="ace_src/mode-html.js" type="text/javascript" charset="utf-8"></script>
-		<script src="ace_src/mode-css.js" type="text/javascript" charset="utf-8"></script>
-		<script src="ace_src/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/lib/ace_src/ace.js"               charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/lib/ace_src/theme-textmate.js"    charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/lib/ace_src/theme-eclipse.js"     charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/lib/ace_src/theme-vibrant_ink.js" charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/lib/ace_src/theme-kr_theme.js"    charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/lib/ace_src/theme-cobalt.js"      charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/lib/ace_src/mode-java.js"         charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/lib/ace_src/mode-c_cpp.js"        charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/lib/ace_src/mode-html.js"         charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/lib/ace_src/mode-css.js"          charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/lib/ace_src/mode-javascript.js"   charset="utf-8"></script>
         <?php include "scripts/file_manager.php"; ?>
         <?php include "scripts/compile_manager.php"; ?> 
 	</head>

@@ -1,6 +1,6 @@
 <?php
-	require_once "aws_php_sdk/sdk.class.php"; // Include the SDK
-    require_once "PHPLiveX.php";
+	require_once "lib/aws_php_sdk/sdk.class.php";
+    require_once "lib/phplivex/PHPLiveX.php";
     
     
     function startsWith($haystack, $needle) {

@@ -5,16 +5,11 @@
 		<meta name="viewport" id="viewport" content="height=device-height,width=device-width,user-scalable=no" />
 		<title>Cloud Lab: Code Editor</title>
 		<link href="css/style_viewlabs.css" rel="stylesheet" type="text/css">		
-		<script type="text/javascript" src="scripts/jquery.js"></script> 
- 		<script type="text/javascript" src="scripts/jquery.tools.min.js"></script>	
-		<script src="ace_src/ace.js" type="text/javascript" charset="utf-8"></script>	
-		<script src="ace_src/theme-vibrant_ink.js" type="text/javascript" charset="utf-8"></script>		
-<!--		<script type="text/javascript" src="scripts/jquery-1.7.1.js"></script>		
-		<script type="text/javascript" src="scripts/jquery.ui.core.js"></script>		
-		<script type="text/javascript" src="scripts/jquery.ui.mouse.js"></script>		
-		<script type="text/javascript" src="scripts/jquery.ui.widget.js"></script>		
-		<script type="text/javascript" src="scripts/jquery.ui.resizable.js"></script>	 -->	
-        <script type="text/javascript" src="scripts/phplivex.js"></script>	
+		<script type="text/javascript" src="scripts/lib/jquery/jquery.js"></script> 
+ 		<script type="text/javascript" src="scripts/lib/jquery/jquery.tools.min.js"></script>	
+		<script type="text/javascript" src="scripts/lib/ace_src/ace.js"  charset="utf-8"></script>	
+		<script type="text/javascript" src="scripts/lib/ace_src/theme-vibrant_ink.js"  charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/lib/phplivex/phplivex.js"></script>	
         <script type="text/javascript" src="scripts/script.js"></script>		
         <?php include "scripts/project_manager.php"; ?>				
 		<script type="text/javascript">

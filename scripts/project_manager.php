@@ -1,6 +1,4 @@
 <?php
-    $SDK_HOME = 'aws_php_sdk/';    
-	//require_once $SDK_HOME . 'sdk.class.php'; // Include the SDK
     require_once 'file_manager.php';
     
     class ProjectManager
