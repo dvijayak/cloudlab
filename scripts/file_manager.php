@@ -1,5 +1,5 @@
 <?php
-	require_once "lib/aws_php_sdk/sdk.class.php";
+    require_once "lib/aws/sdk.class.php";
     require_once "lib/phplivex/PHPLiveX.php";
     
     
