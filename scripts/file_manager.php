@@ -205,7 +205,7 @@
             return $response->isOk();
         }
     }
-    
+	  
  	$ajax = new PHPLiveX();  
     
 	$fileManager = new FileManager();  
